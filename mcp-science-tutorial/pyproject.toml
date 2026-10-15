@@ -1,0 +1,34 @@
+[project]
+name = "mcp-science-tutorial"
+version = "0.1.0"
+description = "Tutorial: tool calling and MCP servers for scientific agents (materials science and geoscience)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp>=2.0,<3",          # MCP Python SDK v2 (MCPServer, Client)
+    "jsonschema>=4.20",   # validates every tool call before it runs
+    "openai>=1.60",         # used only as a generic OpenAI-compatible HTTP client
+    "python-dotenv>=1.0",
+    "pandas>=2.0",
+]
+
+[project.scripts]
+sci-check = "sci_mcp.check_setup:main"
+sci-geo-server = "sci_mcp.servers.geoscience_server:main"
+sci-materials-server = "sci_mcp.servers.materials_server:main"
+sci-porosity-server = "sci_mcp.servers.porosity_server:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "pytest-asyncio>=0.24", "nbformat>=5"]
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["solutions", "exercises"]
+
+[tool.uv.build-backend]
+module-name = "sci_mcp"
