@@ -2,7 +2,7 @@
 name = "mcp-science-tutorial"
 version = "0.1.0"
 description = "Tutorial: tool calling and MCP servers for scientific agents (materials science and geoscience)"
-readme = "README.md"
+readme = "01_README.md"
 requires-python = ">=3.12"
 dependencies = [
     "mcp>=2.0,<3",          # MCP Python SDK v2 (MCPServer, Client)
