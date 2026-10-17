@@ -5,7 +5,7 @@ You will give an LLM a *validated* porosity calculator through MCP, then break i
 Files: `exercises/porosity_exercise_server.py` (edit this), `exercises/ex1_check.py`, `exercises/ex1_run_agent.py`.
 Data: `data/well_log_sample.csv` (depth, RHOB, DT, NPHI, RT).
 
-## Part A - Implement the tool (5 min, no API key needed)
+## Part A - Implement the tool ( no API key needed)
 
 Open `porosity_exercise_server.py` and finish `density_porosity` (TODO 1-4):
 
@@ -16,7 +16,7 @@ Open `porosity_exercise_server.py` and finish `density_porosity` (TODO 1-4):
 
 Check yourself: `uv run exercises\ex1_check.py` - every line should say PASS.
 
-## Part B - Let the agent use it (4 min)
+## Part B - Let the agent use it 
 
 `uv run exercises/ex1_run_agent.py`
 
@@ -26,7 +26,7 @@ Look at the three questions:
 * Q3 has a unit mistake (RHOB = 235). Does the model retry after the ToolError, or answer anyway?
   Delete your range check, re-run Q3, and compare. Which version would you trust in a paper?
 
-## If you have time, Part C - Stretch / debrief (3 min)
+## If you have time, Part C - Stretch / debrief 
 
 * Add a `sonic_porosity` tool (Wyllie: `(dt - 55.5) / (189 - 55.5)`) and ask the agent to compare density and
   sonic porosity at 2540 m. Which parts of the reply came from tools, and which from the model?

@@ -48,7 +48,6 @@ src/sci_mcp/
 demos/            d01 ... d06, one per tutorial demo section
 exercises/        porosity_exercise_server.py (TODOs), ex1_check.py, ex1_run_agent.py, EXERCISES.md
 solutions/        porosity_exercise_server.py (reference, use it after you've tried your implementation) 
-notebooks/        [Optional] colab_quickstart.ipynb (self-contained, in-process server)
 tests/            physics, servers, and an end-to-end agent test against a scripted fake endpoint
 data/             well_log_sample.csv
 ```
@@ -73,4 +72,5 @@ These can be registered in any MCP host (e.g. Claude Desktop, Claude Code, IDEs)
 * **`sci-check` says the endpoint did not request a tool** - pick a model with function/tool calling; some local models need a tool-capable chat template.
 * **HTTP 400 mentioning `parallel_tool_calls`** - the loop only sends that field with `parallel=False` (demo d06); remove it in `client/llm.py` for strict servers.
 * **Windows** - use PowerShell; commands are identical. Servers are launched with the same Python interpreter (`sys.executable`), so no PATH tweaks are required.
+
 * **Important to Note:** Model answers differ run-to-run; the *tool outputs* do not. That is the point of the tutorial.

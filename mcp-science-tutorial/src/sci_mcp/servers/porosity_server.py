@@ -52,13 +52,24 @@ def density_porosity(
 
 
 @mcp.tool()
-def sonic_porosity(dt_us_ft: float, dt_matrix: float = 55.5, dt_fluid: float = 189.0) -> dict:
+def sonic_porosity(
+    dt_us_ft: Annotated[float, Field(description="Sonic slowness from the sonic log, microseconds per foot (us/ft)")],
+    dt_matrix: Annotated[float, Field(description="Matrix slowness (sandstone), microseconds per foot (us/ft)")] = 55.5,
+    dt_fluid: Annotated[float, Field(description="Pore-fluid slowness (fresh water), microseconds per foot (us/ft)")] = 189.0,
+    ) -> dict:
     """Wyllie time-average sonic porosity (fraction) from slowness in microseconds/ft."""
     return result(compute(phys.sonic_porosity_wyllie, dt_us_ft, dt_matrix, dt_fluid), "fraction", "Wyllie time-average", dt_us_ft=dt_us_ft)
 
 
 @mcp.tool()
-def archie_water_saturation(phi: float, rt_ohm_m: float, rw_ohm_m: float, a: float = 1.0, m: float = 2.0, n: float = 2.0) -> dict:
+def archie_water_saturation(
+    phi: Annotated[float, Field(description="Porosity, fraction (0-1)")],
+    rt_ohm_m: Annotated[float, Field(description="True resistivity, ohm-m")],
+    rw_ohm_m: Annotated[float, Field(description="Formation-water resistivity, ohm-m")],
+    a: Annotated[float, Field(description="Lithology factor (typically 0.5-2.0)")] = 1.0,
+    m: Annotated[float, Field(description="Saturation exponent (typically 1.5-3.0)")]= 2.0,
+    n: Annotated[float, Field(description="Resistivity exponent (typically 1.5-3.0)")]= 2.0,
+) -> dict:
     """Archie water saturation Sw (fraction) from porosity, true resistivity and formation-water resistivity."""
     return result(compute(phys.archie_water_saturation, phi, rt_ohm_m, rw_ohm_m, a, m, n), "fraction", "Archie", phi=phi, rt_ohm_m=rt_ohm_m, rw_ohm_m=rw_ohm_m)
 

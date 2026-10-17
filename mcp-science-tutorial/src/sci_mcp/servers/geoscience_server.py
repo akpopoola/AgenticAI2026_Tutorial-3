@@ -2,7 +2,7 @@
 
 Shows all three MCP primitives on one small server:
   * tools      - model-controlled actions (Gardner, impedance, reflection coefficient, TWT)
-  * resources  - application-controlled read-only data (typical rock velocities / densities)
+  * resources  - application-controlled read-only data (typical rock physical properties: e.g. velocities densities)
   * prompts    - user-controlled templates (interpret a reflector)
 
 Run it standalone over stdio:   uv run sci-geo-server
@@ -25,10 +25,10 @@ mcp = MCPServer(
 )
 
 ROCK_TABLE = {
-    "shale": {"vp_m_s": (2000, 4000), "rho_g_cc": (2.2, 2.7)},
-    "sandstone": {"vp_m_s": (2000, 5000), "rho_g_cc": (2.0, 2.6)},
-    "limestone": {"vp_m_s": (3500, 6500), "rho_g_cc": (2.4, 2.8)},
-    "salt": {"vp_m_s": (4400, 4600), "rho_g_cc": (2.1, 2.2)},
+    "shale": {"vp_m_s": (2000, 4000), "rho_g_cc": (1.8, 3.3)},
+    "sandstone": {"vp_m_s": (2000, 4500), "rho_g_cc": (1.6, 2.8)},
+    "limestone": {"vp_m_s": (3500, 6000), "rho_g_cc": (1.9, 2.9)},
+    "salt": {"vp_m_s": (4400, 5500), "rho_g_cc": (2.1, 2.6)},
 }
 
 
