@@ -22,6 +22,8 @@ Examples come from materials science (XRD) and geoscience (rock physics, petroph
 5. Verify: `uv run sci-check` - every line should say `[ ok ]`
 6. Optional: `uv run pytest` runs the offline test-suite (no key needed)
 
+** IDE:** Although you may use your editor of choice. I recommend VS Code
+
 **Never commit** `.env`; it is git-ignored (to secure your API key).
 
 ## End of pre-work setup 
