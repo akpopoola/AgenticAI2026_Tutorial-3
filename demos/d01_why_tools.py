@@ -6,6 +6,7 @@ Ground truth comes from the tested physics code in sci_mcp.physics.
     uv run demos/d01_why_tools.py
 """
 import asyncio
+import json
 import re
 
 from sci_mcp.client.agent import run_agent
@@ -27,7 +28,7 @@ def first_number(text: str) -> float | None:
 async def main() -> None:
     llm = LLM()
     truth = scherrer_crystallite_size(0.35, 38.2)
-    print(f"Ground truth (tested code): {truth:.3f} nm\n")
+    print(f"\nGround truth (tested code): {truth:.3f} nm\n")
 
     print("WITHOUT tools - the model 'does the maths in its head':")
     for i in range(4):
@@ -41,8 +42,9 @@ async def main() -> None:
     async with Toolbox() as tb:
         await tb.connect("materials", stdio_module("sci_mcp.servers.materials_server"))
         res = await run_agent(llm, tb, QUESTION.replace("Reply with ONLY the crystallite size in nm, as a number.", "Give the crystallite size in nm."))
-        print(f"  answer: {res.answer.strip()}")
-        print(f"  tool outputs: {[t.output.replace(chr(10), ' ')[:120] for t in res.trace]}")
+        answer = json.loads(res.trace[0].output)["value"]
+        print(f"\n  answer computed with tool: {answer:.3f}")
+        print(f"\n  tool outputs: {[t.output.replace(chr(10), ' ')[:120] for t in res.trace]}")
 
 
 if __name__ == "__main__":
