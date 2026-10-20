@@ -9,9 +9,7 @@ from typing import Any
 
 from sci_mcp.client.llm import LLM
 from sci_mcp.client.toolbox import Toolbox
-# and do not use websearch, because it is not a scientific tool and we want to avoid hallucinations
-#. Quote values with units and mention the method used.
-# NEVER do the arithmetic yourself. 
+ 
 SYSTEM = (
     "You are a careful scientific assistant. For any numerical result use the provided tools; "
     "never do the arithmetic yourself. Report values with units and mention the method used."
