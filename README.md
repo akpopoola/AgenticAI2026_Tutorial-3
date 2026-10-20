@@ -10,7 +10,7 @@ Examples come from materials science (XRD) and geoscience (rock physics, petroph
 * Any **OpenAI-compatible** endpoint with a token (API key) - OpenAI, Anthropic, Azure/OpenRouter/Groq, or a local vLLM/Ollama/LiteLLM (for your confidential data)
 * Project managed with **uv**; no agent framework (this is worth exploring further)
 
-## Pre-work (10 minutes, do this before the session)
+## Pre-work (10 minutes, do this before the session starts)
 
 1. Install uv - <https://docs.astral.sh/uv/getting-started/installation/>
    * macOS / Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
@@ -18,7 +18,7 @@ Examples come from materials science (XRD) and geoscience (rock physics, petroph
 2. From this folder: `uv sync` (creates `.venv`, installs Python 3.12+ and all dependencies)
 3. Activate the virtual environment `.venv\Scripts\activate`
 4. Configure your endpoint: copy `.env.example` to `.env` and set
-   `LLM_API_KEY`, `LLM_BASE_URL` and `LLM_MODEL` (must support tool/function calling-suggestion in the tutorial slide). Examples are provided, keep only one block and delete the other two in your new `.env` file
+   `LLM_API_KEY`, `LLM_BASE_URL` and `LLM_MODEL` (must support tool/function calling). Examples are provided, keep only one block and delete the other two in your new `.env` file
 5. Verify: `uv run sci-check` - every line should say `[ ok ]`
 6. Optional: `uv run pytest` runs the offline test-suite (no key needed)
 
